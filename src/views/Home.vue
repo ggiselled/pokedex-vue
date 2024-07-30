@@ -35,7 +35,6 @@ export default {
   },
   computed: {
     ...mapState('poke', ['randomPokemon', 'pokedex', 'allPokemons']),
-    
     // Contador de Pokemones
     discoveredCount() {
       return this.pokedex.length;
