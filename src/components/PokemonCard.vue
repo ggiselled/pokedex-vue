@@ -34,23 +34,7 @@ export default {
 </script>
 
 <style scoped>
-.card {
-  width: 18rem;
-  margin: auto;
-  cursor: pointer;
-  background-color: red;
-  transition: transform 0.2s;
-}
-.card:hover {
-  transform: scale(1.05);
-}
-.grayscale {
-  filter: grayscale(100%);
-}
-.unclickable {
-  cursor: not-allowed;
-}
-.unclickable:hover {
-  transform: none;
-}
+
+@import '../style/pokemonCard.css';
+
 </style>

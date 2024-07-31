@@ -1,6 +1,6 @@
 <template>
   <div class="container text-center mt-5">
-    <button class="btn btn-primary" @click="getRandomPokemon">¿QUIÉN ES ESE POKEMON?</button>
+    <div class="pixel"  @click="getRandomPokemon"><p>¿QUIÉN ES ESE POKEMON?</p></div>
     <PokemonCard v-if="randomPokemon" :pokemon="randomPokemon" />
     <div class="row mt-5">
       <Filter :pokedex="pokedex" :allPokemons="allPokemons" @update:filter="updateFilteredPokemons" />
@@ -63,15 +63,5 @@ export default {
 </script>
 
 <style scoped>
-.container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: green;
-}
-
-.counter {
-  font-size: 1.2em;
-  font-weight: bold;
-}
+@import '../style/home.css';
 </style>

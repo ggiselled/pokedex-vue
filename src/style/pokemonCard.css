@@ -1,0 +1,23 @@
+.card {
+    width: 18rem;
+    margin: auto;
+    cursor: pointer;
+    background-color: #EE353A;
+    transition: transform 0.2s;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.grayscale {
+    filter: grayscale(100%);
+}
+
+.unclickable {
+    cursor: not-allowed;
+}
+
+.unclickable:hover {
+    transform: none;
+}
