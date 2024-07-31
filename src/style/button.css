@@ -39,10 +39,6 @@
     height: 113%;
     z-index: -1;
 }
-/* Boton inicial */
-
-
-
 
 
 /* Botones filtros */
@@ -79,4 +75,12 @@
 
 .btn-home:hover {
     background: #0AA3DC;
+}
+
+.btn-toggle {
+    background: #EE353A;
+}
+
+.btn-toggle:hover {
+    background: #EE353A;
 }

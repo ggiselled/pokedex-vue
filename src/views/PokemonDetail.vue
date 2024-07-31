@@ -1,37 +1,34 @@
 <template>
-  <div v-if="pokemon" class="container mt-5">
+  <div v-if="pokemon" class="detail-conteiner">
+    <div class="btn-details">
     <button class="btn btn-secondary" @click="goHome">
       <i class="bi bi-caret-left-square-fill"></i>
     </button>
+    <div class="btn btn-toggle" @click="togglePokedex">
+      {{ isInPokedex ? "ELIMINAR DE MI POKEDEX" : "AGREGAR A MI POKEDEX" }}
+    </div>
 
-    <div class="detail-conteiner">
+    </div>
+    <div class="detail-info">
       <div class="detail-img">
         <img
           :src="pokemon.sprites.front_default"
           alt="pokemon image"
-          class="img-fluid"
+          class="img-info"
         />
-      </div>
-
-      <div class="detail-description">
         <h1>{{ pokemon.name }}</h1>
         <p>TIPO: {{ pokemon.types[0].type.name }}</p>
         <p>PESO: {{ pokemon.weight }}</p>
-        <p>DESCRIPCIÓN: {{ description }}</p>
-        <div>
+        <p class="description">DESCRIPCIÓN: {{ description }}</p>
+      </div>
+      <div class="detail-mov">
         <h2>MOVIMIENTOS</h2>
         <ul>
           <li v-for="move in pokemon.moves" :key="move.move.name">
-            {{ move.move.name }}
+            {{ move.move.name }} |
           </li>
         </ul>
-        </div>
-        <button class="btn btn-primary mt-3" @click="togglePokedex">
-          {{ isInPokedex ? "Eliminar de mi Pokedex" : "Agregar a mi Pokedex" }}
-        </button>
       </div>
-
-
     </div>
   </div>
 </template>
@@ -78,5 +75,6 @@ export default {
 </script>
 
 <style scoped>
-@import '../style/home.css';
+@import "../style/pokemonDetail.css";
+@import "../style/button.css";
 </style>

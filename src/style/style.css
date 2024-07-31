@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
 /* Reset */
 
 * {
@@ -6,10 +7,6 @@
     padding: 0;
     box-sizing: border-box;
 }
-
-
-
-
 
 html,
 body {
