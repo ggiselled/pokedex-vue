@@ -1,0 +1,82 @@
+.btn {
+    font-size: 1.2em;
+    height: 70px;
+    border: 0px;
+    position: relative;
+    margin-right: 15px;
+    box-shadow: inset -4px 2px 1px 1px grey, inset -4px -2px 1px 1px lightgray,
+        inset 4px 0px 1px 1px lightgray;
+}
+
+.btn:hover {
+    cursor: pointer;
+}
+
+.btn:active {
+    top: 5px;
+    box-shadow: -4px 2px 1px 1px grey, -4px -2px 1px 1px lightgray,
+        4px 0px 1px 1px lightgray;
+}
+
+.btn::after {
+    content: "";
+    background: black;
+    position: absolute;
+    left: -2.5%;
+    top: 0;
+    width: 105%;
+    height: 100%;
+    z-index: -1;
+}
+
+.btn::before {
+    content: "";
+    background: black;
+    position: absolute;
+    left: 0;
+    top: -5%;
+    width: 100%;
+    height: 113%;
+    z-index: -1;
+}
+/* Boton inicial */
+
+
+
+
+
+/* Botones filtros */
+
+.btn-todos {
+    background: #ca4b56;
+}
+
+.btn-todos:hover {
+    background: #ca4b56;
+}
+
+.btn-descubiertos {
+    background: #f5ef51;
+}
+
+.btn-descubiertos:hover {
+    background: #f5ef51;
+}
+
+.btn-perdidos {
+    background: #449e61;
+}
+
+.btn-perdidos:hover {
+    background: #449e61;
+}
+
+/* Botones principales */
+
+.btn-home {
+    background: #0AA3DC;
+}
+
+.btn-home:hover {
+    background: #0AA3DC;
+}

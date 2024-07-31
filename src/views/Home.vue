@@ -1,6 +1,6 @@
 <template>
   <div class="container text-center mt-5">
-    <div class="pixel"  @click="getRandomPokemon"><p>¿QUIÉN ES ESE POKEMON?</p></div>
+    <div class="btn btn-home"  @click="getRandomPokemon"><p>¿QUIÉN ES ESE POKEMON?</p></div>
     <PokemonCard v-if="randomPokemon" :pokemon="randomPokemon" />
     <div class="row mt-5">
       <Filter :pokedex="pokedex" :allPokemons="allPokemons" @update:filter="updateFilteredPokemons" />
@@ -45,7 +45,8 @@ export default {
   },
   created() {
     this.fetchAllPokemons();
-    this.updateFilteredPokemons(this.allPokemons); // Inicializar con todos los Pokémon
+    this.updateFilteredPokemons(this.allPokemons); 
+    this.getRandomPokemon(); 
   },
   methods: {
     ...mapActions('poke', ['fetchRandomPokemon', 'fetchAllPokemons']),
@@ -64,4 +65,7 @@ export default {
 
 <style scoped>
 @import '../style/home.css';
+@import '../style/button.css';
+
+
 </style>
