@@ -37,15 +37,15 @@ export default {
         filteredPokemons = this.allPokemons;
       }
       this.$emit("update:filter", filteredPokemons);
-    },
-  },
-};
+    }
+  }
+}
 </script>
 
 <style scoped>
 @import '../style/button.css';
+
 .filter {
   margin-bottom: 20px;
 }
-
 </style>

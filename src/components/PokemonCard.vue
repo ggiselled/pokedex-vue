@@ -26,7 +26,13 @@ export default {
   methods: {
     activePokemon() {
       if (!this.grayscale) {
-        this.$router.push(`/pokemon/${this.pokemon.id}`)
+        this.$store.dispatch('pokeStore/selectPokemon', this.pokemon.id)
+          .then(() => {
+            this.$router.push(`/pokemon/${this.pokemon.id}`);
+          })
+          .catch(error => {
+            console.error('Error al seleccionar el Pokémon:', error);
+          });
       }
     }
   }
@@ -34,7 +40,5 @@ export default {
 </script>
 
 <style scoped>
-
 @import '../style/pokemonCard.css';
-
 </style>
