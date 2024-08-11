@@ -1,25 +1,20 @@
 <template>
-  <div v-if="pokemon" class="detail-conteiner">
+  <div v-if="pokemon" class="detail-container">
     <div class="btn-details">
-    <button class="btn btn-secondary" @click="goHome">
-      <i class="bi bi-caret-left-square-fill"></i>
-    </button>
-    <div class="btn btn-toggle" @click="togglePokedex">
+      <button class="btn btn-secondary" @click="goHome">
+        <i class="bi bi-caret-left-square-fill"></i> Regresar
+      </button>
+    <div class="btn btn-toggle" @click="togglePokedexEntry">
       {{ isInPokedex ? "ELIMINAR DE MI POKEDEX" : "AGREGAR A MI POKEDEX" }}
     </div>
-
     </div>
     <div class="detail-info">
       <div class="detail-img">
-        <img
-          :src="pokemon.sprites.front_default"
-          alt="pokemon image"
-          class="img-info"
-        />
+        <img :src="pokemon.sprites.front_default" alt="pokemon image" class="img-info" />
         <h1>{{ pokemon.name }}</h1>
         <p>TIPO: {{ pokemon.types[0].type.name }}</p>
         <p>PESO: {{ pokemon.weight }}</p>
-        <p class="description">DESCRIPCIÓN: {{ description }}</p>
+        <p class="description">DESCRIPCIÓN: {{ pokemon.description }}</p>
       </div>
       <div class="detail-mov">
         <h2>MOVIMIENTOS</h2>
@@ -34,41 +29,40 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from "vuex";
+import { mapState, mapActions } from 'vuex';
 
 export default {
   computed: {
-    ...mapGetters("poke", ["selectedPokemon", "description", "pokedex"]),
+      ...mapState('pokeStore', ['detailedPokemon', 'pokedex']),
     pokemon() {
-      return this.selectedPokemon;
+      return this.detailedPokemon;
     },
     isInPokedex() {
-      return (
-        this.pokedex &&
-        this.pokedex.some((pokemon) => pokemon.id === this.pokemon.id)
-      );
+      return this.pokedex.some((p) => p.id === this.pokemon.id);
     },
   },
   created() {
-    this.fetchPokemonDetails(this.$route.params.id);
+    // Asegurarse de que los datos están listos antes de llamar a selectPokemon
+    this.initializePokemonData().then(() => {
+      this.selectPokemon(this.$route.params.id);
+    }).catch(error => {
+      console.error("Error al inicializar:", error);
+    });
   },
   methods: {
-    ...mapActions("poke", [
-      "fetchPokemonDetails",
-      "addPokemonToPokedex",
-      "removePokemonFromPokedex",
-    ]),
-    togglePokedex() {
-      if (this.isInPokedex) {
-        this.removePokemonFromPokedex(this.pokemon.id);
-      } else {
-        this.addPokemonToPokedex(this.pokemon);
-      }
-      this.$router.push("/");
-    },
+     ...mapActions('pokeStore', ['selectPokemon', 'togglePokedex', 'initializePokemonData']),
 
+    togglePokedexEntry() {
+      if (this.pokemon) {
+        this.togglePokedex(this.pokemon).then(() => {
+          this.$router.push('/');
+        }).catch(error => {
+          console.error("Error al cambiar de pokedex:", error);
+        });
+      }
+    },
     goHome() {
-      this.$router.push("/");
+      this.$router.push('/');
     },
   },
 };

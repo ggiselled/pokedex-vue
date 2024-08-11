@@ -2,7 +2,7 @@
   <div class="container text-center mt-5">
     <div class="btn btn-home" @click="getRandomPokemon"><p>¿QUIÉN ES ESE POKEMON?</p></div>
     <PokemonCard v-if="currentPokemon" :pokemon="currentPokemon" />
-    <div class="row mt-5">
+    <div class="row mt-5 mb-5">
       <Filter :pokedex="pokedex" :allPokemons="pokemonList" @update:filter="updateFilteredPokemons" />
       <div class="counter mt-3">
         Pokemones encontrados: {{ discoveredCount }}/{{ totalPokemons }}
