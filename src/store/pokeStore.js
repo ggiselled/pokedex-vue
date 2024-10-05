@@ -2,8 +2,6 @@
 import axios from "axios";
 
 export default {
-  //Exporta un objeto que contiene la configuración del sotore (Por estar acostumbrada a trabajar con modularización)
-  //El napespaced indica que este módulo del store tiene su propio espacio y todo lo que ocurre dentro está aislado.
   namespaced: true,
   state: {
     currentPokemon: null, //Pokemon que se muestra actualmente
@@ -12,7 +10,6 @@ export default {
     pokemonList: [], //Array que contiene la lista completa de los Pokemon con todos los detalles
   },
 
-  //Son las funciones que modifican el estado de arriba
   mutations: {
     setCurrentPokemon(state, payload) {
       //Establece el Pokemon actual que se está mostrando
@@ -48,7 +45,6 @@ export default {
         //  Si no hay datos
         try {
           const response = await axios.get(
-            //Hace una solicitud a la API para obtener todos los Pokemon con un máximo de 898
             "https://pokeapi.co/api/v2/pokemon?limit=20"
           );
           const pokemonList = await Promise.all(
